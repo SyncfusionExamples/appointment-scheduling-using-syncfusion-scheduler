@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ScheduleSample.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ScheduleSample"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:AppointmentTemplateSelector x:Key="templateSelector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--  Appointment customization  -->
+    <!-- <syncfusion:SfSchedule
+        x:Name="schedule"
+        AppointmentTemplate="{StaticResource templateSelector}"
+        DataSource="{Binding Meetings}"
+        ScheduleView="DayView">-->
+    <syncfusion:SfSchedule
+        x:Name="schedule"
+        DataSource="{Binding Meetings}"
+        ScheduleView="DayView">
+        <syncfusion:SfSchedule.MonthViewSettings>
+            <syncfusion:MonthViewSettings ShowAgendaView="True" />
+        </syncfusion:SfSchedule.MonthViewSettings>
+
+        <syncfusion:SfSchedule.AppointmentMapping>
+            <syncfusion:ScheduleAppointmentMapping
+                ColorMapping="Color"
+                EndTimeMapping="EndTime"
+                IsAllDayMapping="IsAllDay"
+                RecurrenceRuleMapping="RecurrenceRule"
+                StartTimeMapping="BeginTime"
+                SubjectMapping="EventName" />
+        </syncfusion:SfSchedule.AppointmentMapping>
+        <syncfusion:SfSchedule.BindingContext>
+            <local:ViewModel />
+        </syncfusion:SfSchedule.BindingContext>
+    </syncfusion:SfSchedule>
+
+</ContentPage>
